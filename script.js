@@ -1,28 +1,25 @@
-// DOM selection
+// // DOM Selection 2
 
-// 1. document.getElementById() --> element
-const judul = document.getElementById('judul') //menangkap id judul di index.html
-    // ubah warna judul
-    judul.style.color = 'yellow'
+// // 1. document.querySelector() --> element
+// const p4 = document.querySelector('section#b p');
+//     // merubah warna teks
+//     p4.style.color = 'green'
+//     // memperbesar teks
+//     p4.style.fontSize = '40px'
 
-    // ubah warna bg judul
-    judul.style.backgroundColor = 'blue'
-
-    // mengubah tulisan di javascript
-    judul.innerHTML = 'Abdillah Fatih Royhan'
+// const li3 = document.querySelector('section#b ul li:nth-child(3)');
+//     li3.style.backgroundColor = 'lightskyblue'
 
 
-// 2. document.getElementsBtTagName() --> html collection
-const p = document.getElementsByTagName('p') //menyeleksi seluruh paragraph
-    // ubah background color: pake index array(kalau ingin semua pakai looping)
-    p[1].style.backgroundColor = 'lightskyblue'
 
-// ambil h1
-const h1 = document.getElementsByTagName('h1')[0]
-h1.style.fontSize = '50px'
+// //  2. document.querySelectorAll()
+// const li = document.querySelectorAll('li')
+// li[0].style.color = 'green'
+// li[1].style.color = 'green'
 
-//  3. document.getElementsByClassName() --> HtmlCollection
-const p3 = document.getElementsByClassName('p3')[0]
-p3.innerHTML = 'Ini diubah from javasript'
-p3.style.color = 'gold'
-p3.style.backgroundColor = 'blue'
+
+const sectionB = document.getElementById('b')
+// pake sectionB
+const p4 = sectionB.querySelector('p')
+    p4.style.color = 'green'
+    p4.style.fontSize = '40px'
