@@ -1,51 +1,41 @@
-// DOM Manipulation
+// DOM Manipulation 2 - manipulasi Node
 
-// 1. innerHTML
-// const judul = document.getElementById('judul')
-// judul.innerHTML = '<em>My Name Is Abdillah<em>'
+// 1. document.createElement()
+// buat elemen baru
+const p_baru = document.createElement('p')
+const p_baruTeks = document.createTextNode('Ini adalah paragraf baru')
+// simpan tulisan ke p_baru
+p_baru.appendChild(p_baruTeks)
+// simpan diakhir section a
+const sectionA = document.querySelector('section#a')
+sectionA.appendChild(p_baru)
 
-// const sectionA = document.querySelector('section#a')
-// sectionA.innerHTML = '<h2>Hai Abdillah<h2>'
 
-// 2. element.style.<propertyCSS>
-// const judul = document.querySelector('h1#judul')
-// judul.style.color = 'blue'
+// 2. element.insertBefore()
+const liBaru = document.createElement('li')
+// bikin tulisan
+const liTeks = document.createTextNode('Ini adalah Item Baru')
+// masukin teks kedalam li
+liBaru.appendChild(liTeks)
+// tangkap ul dan li2
+const ul = document.querySelector('section#b ul')
+const li2 = document.querySelector('section#b ul li:nth-child(2)')
+// simpan sebelum li2
+ul.insertBefore(liBaru, li2)
 
-// 3. element.setAttribute()
-const judul = document.getElementsByTagName('h1')[0]
-judul.setAttribute('name', 'fatih') //name = fatih
+// 3. element.removeChild -->  menghapus elemen child
+const a = sectionA.getElementsByTagName('a')[0]
+sectionA.removeChild(a)
 
-// 4. element.getAttribute()
-// console.log(judul.getAttribute('id'))
+// 4. element.replaceChild() --> mengubah elemen child
+const sectionB = document.getElementById('b')
+const p4 = sectionB.querySelector('p')
+const h5 = document.createElement('h5')
+const h5Teks = document.createTextNode('New Title') 
+h5.appendChild(h5Teks)
+sectionB.replaceChild(h5, p4)
 
-// 5. element.removeAttribute()
-// const ig = document.querySelector('section#a a')
-// ig.removeAttribute('href')
-
-// 6. element.classList.add()
-// const p3 = document.querySelectorAll('section#a .p3')[0]
-// p3.classList.add('label')
-
-// 7. element.classList.remove()
-// const p3 = document.querySelectorAll('section#a .p3')[0]
-// p3.classList.remove('.p3')
-
-// 8. element.classList.toggle() --> kalau ada dihapus, kalau tidak ada ditambahkan
-// const p3 = document.querySelectorAll('section#a .p3')[0]
-// p3.classList.toggle('label')
-
-// 9. element.classList.item()
-// const p3 = document.querySelectorAll('section#a .p3')[0]
-// p3.classList.add('label')
-// console.log(p3.classList.item(1))
-
-// 10. element.classList.contains()
-// const p3 = document.querySelectorAll('section#a .p3')[0]
-// p3.classList.add('label')
-// console.log(p3.classList.contains('label'))
-
-// 11. element.classList.replace()
-const p3 = document.querySelectorAll('section#a .p3')[0]
-p3.classList.add('label')
-p3.classList.replace('label', 'label1')
-console.log(p3.classList.contains('label'))
+// menambahkan style untuk element yang telah diubah
+h5.style.backgroundColor = 'lightskyblue'
+liBaru.style.backgroundColor = 'red'
+p_baru.style.backgroundColor = 'yellow'
