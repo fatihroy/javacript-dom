@@ -1,41 +1,46 @@
-// DOM Manipulation 2 - manipulasi Node
+// DOM Events --> adalah representasi kejadian yang ada didalam DOM
+// kejadiannya bisa dilakukan oleh user atau otomatis oleh API
+// cara mendengarkan event :
+// 1. Event Handler(Inline HTML Attribute, Element Method)
+// 2. addEventListener()
 
-// 1. document.createElement()
-// buat elemen baru
-const p_baru = document.createElement('p')
-const p_baruTeks = document.createTextNode('Ini adalah paragraf baru')
-// simpan tulisan ke p_baru
-p_baru.appendChild(p_baruTeks)
-// simpan diakhir section a
-const sectionA = document.querySelector('section#a')
-sectionA.appendChild(p_baru)
+// const p2 = document.querySelector('.p2')
+// // 1. inline html attribute --> simpan onclicknya di elemen pada html
+// function ubahwarnap2() {
+//     p2.style.backgroundColor = 'blue'
+// } 
 
 
-// 2. element.insertBefore()
-const liBaru = document.createElement('li')
-// bikin tulisan
-const liTeks = document.createTextNode('Ini adalah Item Baru')
-// masukin teks kedalam li
-liBaru.appendChild(liTeks)
-// tangkap ul dan li2
-const ul = document.querySelector('section#b ul')
-const li2 = document.querySelector('section#b ul li:nth-child(2)')
-// simpan sebelum li2
-ul.insertBefore(liBaru, li2)
+// 2. element method 
+// const p3 = document.querySelector('.p3')
+// p3.onclick = function () {
+//     p3.style.backgroundColor = 'blue'
+// }
 
-// 3. element.removeChild -->  menghapus elemen child
-const a = sectionA.getElementsByTagName('a')[0]
-sectionA.removeChild(a)
+// 3. addEventListener()
+// const p4 = document.querySelector('section#b p')
+// p4.addEventListener('click', function() { 
+//     const ul = document.querySelector('section#b ul')
+//     const ItemBaru = document.createElement('li')
+//     const liTeks = document.createTextNode('list baru dibuat')
+//     ItemBaru.appendChild(liTeks)
+//     ul.appendChild(ItemBaru)
+// })
 
-// 4. element.replaceChild() --> mengubah elemen child
-const sectionB = document.getElementById('b')
-const p4 = sectionB.querySelector('p')
-const h5 = document.createElement('h5')
-const h5Teks = document.createTextNode('New Title') 
-h5.appendChild(h5Teks)
-sectionB.replaceChild(h5, p4)
+// ---event handler vs event listener---
 
-// menambahkan style untuk element yang telah diubah
-h5.style.backgroundColor = 'lightskyblue'
-liBaru.style.backgroundColor = 'red'
-p_baru.style.backgroundColor = 'yellow'
+const p2 = document.querySelector('.p2')
+// p2.onclick = function () {
+//     p2.style.backgrounColor = 'lightblue'
+// }
+// p2.onclick = function () {
+//     p2.style.color = 'yellow'
+// }
+
+// value clicknya bisa diganti : dblclick, mouseenter, mouseleave
+p2.addEventListener('click', function () {
+    p2.style.backgroundColor = 'blue'
+})
+p2.addEventListener('click', function () {
+    p2.style.color = 'yellow'
+})
