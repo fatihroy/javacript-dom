@@ -1,46 +1,69 @@
-// DOM Events --> adalah representasi kejadian yang ada didalam DOM
-// kejadiannya bisa dilakukan oleh user atau otomatis oleh API
-// cara mendengarkan event :
-// 1. Event Handler(Inline HTML Attribute, Element Method)
-// 2. addEventListener()
+// ubah warna backoground
 
-// const p2 = document.querySelector('.p2')
-// // 1. inline html attribute --> simpan onclicknya di elemen pada html
-// function ubahwarnap2() {
-//     p2.style.backgroundColor = 'blue'
-// } 
+// 1. ubah warna background kasus pertama --> pake button html
+    // tangkap button
+    const tUbahWarna = document.getElementsByTagName('button')[0]
+    // bikin fungdi spy background body berubah
+    tUbahWarna.onclick = function () {
+        // ubah warna body cara 1
+        // document.body.style.backgroundColor = 'red'
+
+         // ubah warna body cara 2
+        // document.body.setAttribute('class', 'biru')
+
+        // ubah warna body cara 3
+        document.body.classList.toggle('biru-royal')
 
 
-// 2. element method 
-// const p3 = document.querySelector('.p3')
-// p3.onclick = function () {
-//     p3.style.backgroundColor = 'blue'
-// }
+    } 
 
-// 3. addEventListener()
-// const p4 = document.querySelector('section#b p')
-// p4.addEventListener('click', function() { 
-//     const ul = document.querySelector('section#b ul')
-//     const ItemBaru = document.createElement('li')
-//     const liTeks = document.createTextNode('list baru dibuat')
-//     ItemBaru.appendChild(liTeks)
-//     ul.appendChild(ItemBaru)
-// })
 
-// ---event handler vs event listener---
+// 2. ubah warna background kasus 2 --> bikin button di javascript
+   
+    // bikin button
+    const tUbahWarna2 = document.createElement('button')
+    // bikin teks + masukin teks + tampilkan
+    const txtButton = document.createTextNode('Ubah WarnaAcak')
+    tUbahWarna2.appendChild(txtButton)
+    tUbahWarna.after(tUbahWarna2) // diletakkan setelah button yang pertama
 
-const p2 = document.querySelector('.p2')
-// p2.onclick = function () {
-//     p2.style.backgrounColor = 'lightblue'
-// }
-// p2.onclick = function () {
-//     p2.style.color = 'yellow'
-// }
+    // bikin function
+    tUbahWarna2.addEventListener('click', function () {
+        // dapatkan no acak 1 - 255
+        //math.round = membulatkan keatas, math.floor = membulatkan kebawah, math.ceil() = membulatkan keatas
+           r = Math.round(Math.random() * 255 + 1) 
+           g = Math.round(Math.random() * 255 + 1) 
+           b = Math.round(Math.random() * 255 + 1)
+           
+        document.body.style.backgroundColor = 'rgb('+ r + ',' + g + ','+ b +')'
+        
+    })
 
-// value clicknya bisa diganti : dblclick, mouseenter, mouseleave
-p2.addEventListener('click', function () {
-    p2.style.backgroundColor = 'blue'
+
+
+// 3. ubah warna background kasus 3 --> bikin slider di html diatur dan dibaca di javascript
+const SliderMerah = document.querySelector('input[name=SliderMerah]')
+const SliderHijau = document.querySelector('input[name=SliderHijau]')
+const SliderBiru = document.querySelector('input[name=SliderBiru]')
+// kalau inputnya diganti change maka perubahan warna akan terjadi bila dilepas
+
+SliderMerah.addEventListener('input', function () {
+const r = SliderMerah.Value
+const g = SliderHijau.Value
+const b = SliderBiru.Value
+document.body.style.backgroundColor = 'rgb('+ r + ','+g+','+ b +')'
 })
-p2.addEventListener('click', function () {
-    p2.style.color = 'yellow'
-})
+
+SliderHijau.addEventListener('input', function () {
+    const r = SliderMerah.Value
+    const g = SliderHijau.Value
+    const b = SliderBiru.Value
+    document.body.style.backgroundColor = 'rgb('+ r + ','+g+','+ b +')'
+    })
+
+SliderBiru.addEventListener('input', function () {
+    const r = SliderMerah.Value
+    const g = SliderHijau.Value
+    const b = SliderBiru.Value
+    document.body.style.backgroundColor = 'rgb('+ r + ','+g+','+ b +')'
+        })
