@@ -1,69 +1,127 @@
-// ubah warna backoground
+function pilihan_komputer() {
+      // menangkap pilihan computer
+    // membangkitkan bilangan random
+    var comp = Math.random();
 
-// 1. ubah warna background kasus pertama --> pake button html
-    // tangkap button
-    const tUbahWarna = document.getElementsByTagName('button')[0]
-    // bikin fungdi spy background body berubah
-    tUbahWarna.onclick = function () {
-        // ubah warna body cara 1
-        // document.body.style.backgroundColor = 'red'
+    if( comp < 0.34 ) return 'gajah';
+    if( comp >= 0.34 && comp < 0.67 ) return'orang';
+    return 'semut';
+    
+}
+// bikin fungsi spy gambar komputernya berputar dulu
 
-         // ubah warna body cara 2
-        // document.body.setAttribute('class', 'biru')
+     function putar() {
+          imgCom = document.querySelector('.img-komputer')
+          gambar = ['gajah', 'semut', 'orang']
+          let i = 0
+          const waktuAwal = new Date().getTime()
+     setInterval(function()  {
+          if (new Date().getTime() - waktuAwal > 1000) {
+               clearInterval
+               return 0;
+          }
+          imgCom.setAttribute('src', 'img/' + gambar[i++] +'.png')
+          if (i == gambar.length) {
+               i = 0
+          }
+     }, 100);
+          }
+     
+ 
 
-        // ubah warna body cara 3
-        document.body.classList.toggle('biru-royal')
 
 
-    } 
-
-
-// 2. ubah warna background kasus 2 --> bikin button di javascript
+function hasil(com, player) {
+     // menentukan rules
+     
+     if( player == com) return  'SERI!';
+     if( player == 'gajah' )    return ( com == 'orang' ) ? 'MENANG!' : 'KALAH!';
+     if( player == 'orang' )  return ( com == 'gajah' ) ? 'KALAH!' : 'MENANG!';
+     if( player == 'semut' ) return ( com == 'orang' ) ? 'KALAH' : 'MENANG!';
    
-    // bikin button
-    const tUbahWarna2 = document.createElement('button')
-    // bikin teks + masukin teks + tampilkan
-    const txtButton = document.createTextNode('Ubah WarnaAcak')
-    tUbahWarna2.appendChild(txtButton)
-    tUbahWarna.after(tUbahWarna2) // diletakkan setelah button yang pertama
+ 
+}
+  
 
-    // bikin function
-    tUbahWarna2.addEventListener('click', function () {
-        // dapatkan no acak 1 - 255
-        //math.round = membulatkan keatas, math.floor = membulatkan kebawah, math.ceil() = membulatkan keatas
-           r = Math.round(Math.random() * 255 + 1) 
-           g = Math.round(Math.random() * 255 + 1) 
-           b = Math.round(Math.random() * 255 + 1)
-           
-        document.body.style.backgroundColor = 'rgb('+ r + ',' + g + ','+ b +')'
-        
-    })
+// cara efektif
+               const imgPilihan = document.querySelectorAll('li img')
+               imgPilihan.forEach(function (gambar) { //parameternya adalah gambar yang ada di li
 
 
+          gambar.addEventListener('click', function () {
+                    const player = gambar
 
-// 3. ubah warna background kasus 3 --> bikin slider di html diatur dan dibaca di javascript
-const SliderMerah = document.querySelector('input[name=SliderMerah]')
-const SliderHijau = document.querySelector('input[name=SliderHijau]')
-const SliderBiru = document.querySelector('input[name=SliderBiru]')
-// kalau inputnya diganti change maka perubahan warna akan terjadi bila dilepas
+                    const pilihanKomputer = pilihan_komputer()
+                    const pilihanPlayer = player.className // mengambil nama kelas yaitu misal: gajah
+                    hasil = hasil(pilihanKomputer, pilihanPlayer)
 
-SliderMerah.addEventListener('input', function () {
-const r = SliderMerah.Value
-const g = SliderHijau.Value
-const b = SliderBiru.Value
-document.body.style.backgroundColor = 'rgb('+ r + ','+g+','+ b +')'
-})
+           // jalankan fungsi putar
+                    putar()
+                
+                    setTimeout(function () {
+                         // ganti gambar pilihan komputer
+                            const imgcom = document.querySelector('.img-komputer')
+                            imgcom.setAttribute('src', 'img/'+ pilihanKomputer + '.png')
+             
+                            // tampilkan hasil
+                            const info = document.querySelector('.info')
+                            info.innerHTML = hasil
+                                 }, 1000)
+              
 
-SliderHijau.addEventListener('input', function () {
-    const r = SliderMerah.Value
-    const g = SliderHijau.Value
-    const b = SliderBiru.Value
-    document.body.style.backgroundColor = 'rgb('+ r + ','+g+','+ b +')'
-    })
 
-SliderBiru.addEventListener('input', function () {
-    const r = SliderMerah.Value
-    const g = SliderHijau.Value
-    const b = SliderBiru.Value
-    document.body.style.backgroundColor = 'rgb('+ r + ','+g+','+ b +')'
-        })
+
+})})
+
+
+
+// cara yang tydak efektif
+// // menangkap pilihan semut
+// const Psemut = document.querySelector('.semut')
+// Psemut.addEventListener('click', function () {
+//      const pilihanKomputer = pilihan_komputer()
+//      const pilihanPlayer = Psemut.className// mengambil nama kelas yaitu gajah
+// hasil = hasil(pilihanKomputer, pilihanPlayer)
+     
+// // ganti gambar pilihan komputer
+// const imgcom = document.querySelector('.img-komputer')
+// imgcom.setAttribute('src', 'img/'+ pilihanKomputer + '.png')
+
+// // tampilkan hasil
+// const info = document.querySelector('.info')
+// info.innerHTML = hasil
+// })
+
+
+
+// // menangkap pilihan orang
+// const Porang = document.querySelector('.orang')
+// Porang.addEventListener('click', function () {
+//      const pilihanKomputer = pilihan_komputer()
+//      const pilihanPlayer = Porang.className// mengambil nama kelas yaitu gajah
+// hasil = hasil(pilihanKomputer, pilihanPlayer)
+     
+// // ganti gambar pilihan komputer
+// const imgcom = document.querySelector('.img-komputer')
+// imgcom.setAttribute('src', 'img/'+ pilihanKomputer + '.png')
+
+// // tampilkan hasil
+// const info = document.querySelector('.info')
+// info.innerHTML = hasil
+// })
+
+// // menangkap pilihan gajah
+// const Pgajah = document.querySelector('.gajah')
+// Pgajah.addEventListener('click', function () {
+//      const pilihanKomputer = pilihan_komputer()
+//      const pilihanPlayer = Pgajah.className// mengambil nama kelas yaitu gajah
+// hasil = hasil(pilihanKomputer, pilihanPlayer)
+     
+// // ganti gambar pilihan komputer
+// const imgcom = document.querySelector('.img-komputer')
+// imgcom.setAttribute('src', 'img/'+ pilihanKomputer + '.png')
+
+// // tampilkan hasil
+// const info = document.querySelector('.info')
+// info.innerHTML = hasil
+// })

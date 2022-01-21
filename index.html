@@ -1,48 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    body{
-      text-align: center;
-    }
-    .biru-royal{
-      background-color: royalblue;
-    }
-    .kotak{
-      margin: 50px auto;
-      width: 50px;
-      height: 50px;
-    }
-    .merah
-    { margin: 50px auto;
-      background-color: red;
-    }
-    .biru{
-      background-color: blue;
-    }
-    .hijau{
-      background-color: green;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Bermain dengan warna</h2>
-  <button type="button" >UbahWarna</button>
+    <h1>Suwit Jawa v2.0</h1>
 
-  <!-- bikin slider -->
-  <div class="kotak merah"></div>
-  <input type="range" min="0" max="255" name="SliderMerah">
-
-  <div class="kotak hijau"></div>
-  <input type="range" min="0" max="255" name="SliderHijau">
-
-  <div class="kotak biru"></div>
-  <input type="range" min="0" max="255" name="SliderBiru">
-
-  <script src="script.js"></script>
+    <div class="container">
+        <div class="area-komputer">
+            <img src="img/gajah.png" class="img-komputer">
+        </div>
+        <div class="info"></div>
+        <div class="area-player">
+            <ul>
+                <li>
+                    <img src="img/gajah.png" class="gajah">
+                </li>
+                <li>
+                    <img src="img/orang.png" class="orang">
+                </li>
+                <li>
+                    <img src="img/semut.png" class="semut">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
+
