@@ -24,6 +24,8 @@ const close = document.querySelectorAll('.close')
 close.forEach(function (e) {
     e.addEventListener('click', function (e) {
         e.target.parentElement.style.display = 'none'
+        // prevent default --> untuk menghentikan semua aksi default yang dilakukan oleh sebuah elemen
+        e.preventDefault(); //defaultnya elemen a pd html merefresh halaman
     })
 })
 
@@ -33,7 +35,8 @@ close.forEach(function (e) {
 
 // mencoba
 // kalau element itu mengabaikan enter/spasi
-const nama = document.querySelector('.nama')
+// const nama = document.querySelector('.nama')
 console.log(nama.parentElement.parentElement); //ambil kakek
 // kalau node gak boleh pake enter dan spasi misal:
-console.log(nama.nextSibling);
+// console.log(nama.nextSibling);
+
