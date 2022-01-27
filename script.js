@@ -21,22 +21,33 @@ const close = document.querySelectorAll('.close')
 // }
 
 //e adalah untuk ambil satu elemen
-close.forEach(function (e) {
-    e.addEventListener('click', function (e) {
-        e.target.parentElement.style.display = 'none'
-        // prevent default --> untuk menghentikan semua aksi default yang dilakukan oleh sebuah elemen
-        e.preventDefault(); //defaultnya elemen a pd html merefresh halaman
-    })
-})
+// close.forEach(function (e) {
+//     e.addEventListener('click', function (e) {
+//         e.target.parentElement.style.display = 'none'
+//         // prevent default --> untuk menghentikan semua aksi default yang dilakukan oleh sebuah elemen
+//         e.preventDefault(); //defaultnya elemen a pd html merefresh halaman
+//         e.stopPropagation() //--> spy tidak melakukan event bubling
+//     })
+// })
 
-// mengembalikan :                  node         element       node          element                  node               element
-// method-method dom traversal --> parentNode, parentElement, nextSibling, nextElementSibling, previousSibling, previousElementSibling
+// // event bubling --> ktk kita punya event pd suatu elemen, dan  elemen pembungkusnya juga ada even maka even elemen pembungkus akan dijalankan terlebih dahulu
+// const cards = document.querySelectorAll('.card')
+// cards.forEach(function(c) {
+//     c.addEventListener('click', function () {
+//         alert('allright')
+//     })
+// })
+  
 
 
-// mencoba
-// kalau element itu mengabaikan enter/spasi
-// const nama = document.querySelector('.nama')
-console.log(nama.parentElement.parentElement); //ambil kakek
-// kalau node gak boleh pake enter dan spasi misal:
-// console.log(nama.nextSibling);
 
+// pake event bubling spy tobol close lebih efektif
+const container = document.querySelector('.container')
+// e adalah element pada container
+container.addEventListener('click', function(e) {
+//jika yang diklik memiliki class close maka:
+ if (e.target.className == 'close') {
+     e.target.parentElement.style.display = 'none'
+e.preventDefault()
+ }
+})                            
